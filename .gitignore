@@ -1,0 +1,46 @@
+# Data and large artefacts: never commit
+/data/
+*.csv
+*.parquet
+*.xlsx
+*.xls
+*.zip
+
+# Model weights and checkpoints
+*.pt
+*.pth
+*.onnx
+*.pkl
+*.joblib
+*.h5
+*.mat
+*.npz
+*.ckpt
+/outputs/
+
+# Secrets
+.env
+.env.*
+secrets.h
+
+# Documents (briefs, reports, dissertation)
+*.docx
+*.pdf
+*.pptx
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Caches
+eia_cache/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
