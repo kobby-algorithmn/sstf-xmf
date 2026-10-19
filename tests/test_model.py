@@ -58,7 +58,8 @@ def dummy_batch(config):
         "med_ids": torch.randint(0, 600, (B, V, M)),
         "med_features": torch.randn(B, V, M, 3),
         "med_mask": torch.ones(B, V, M, dtype=torch.bool),
-        "text_ids": torch.randint(0, 30000, (B, T)),
+        # Bio_ClinicalBERT's vocabulary has 28,996 tokens
+        "text_ids": torch.randint(0, 28996, (B, T)),
         "text_mask": torch.ones(B, T, dtype=torch.bool),
         "imaging_features": torch.randn(B, config.model.imaging_feature_dim),
         "event": torch.randint(0, 2, (B,)).float(),

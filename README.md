@@ -23,16 +23,15 @@ for cardiovascular risk prediction from longitudinal electronic health records.
 
 ### Test results
 
-Run on 18 October 2026 (Python 3.13, PyTorch 2.14 CPU):
+Run on 19 October 2026 (Python 3.13, PyTorch 2.14 CPU, `transformers` with
+Bio_ClinicalBERT downloaded): **7 passed**, including the full-model forward
+pass and the parameter-count test.
 
-- Without `transformers` installed: **5 passed, 2 skipped**. The two skipped
-  tests need the full model, which loads Bio_ClinicalBERT.
-- With `transformers` installed (Bio_ClinicalBERT downloaded): **6 passed,
-  1 failed**. The failing test is `test_forward_pass`, with
-  `IndexError: index out of range in self` inside BERT's word embeddings. The
-  test's dummy batch draws `text_ids` from `randint(0, 30000)`, but
-  Bio_ClinicalBERT's vocabulary has 28,996 tokens, so some IDs are out of range.
-  This is a known open bug in the test data, not yet fixed.
+- Without `transformers` installed, the two full-model tests are skipped
+  (5 passed, 2 skipped).
+- Fixed on 19 October 2026: the forward-pass test's dummy text IDs went up to
+  30,000, beyond Bio_ClinicalBERT's 28,996-token vocabulary, which caused an
+  `IndexError`. The test now draws IDs within the vocabulary.
 
 ## What the design intends
 
